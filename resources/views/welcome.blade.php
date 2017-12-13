@@ -44,7 +44,7 @@
 
 		<div class="col m6">
 			<h1>Sign Up</h1>
-			<form action="#" method="post">
+			<form action="{{ route('signup') }}" method="post">
 				
 				<div class="row">
 					<div class="input-field col m12 s12">
@@ -100,6 +100,7 @@
 						<button class="btn waves-effect waves-light red darken-3" type="button" name="action">Reset
     						<i class="material-icons right">cancel</i>
   						</button>
+  						<input type="hidden" name="_token" value="{{Session::token()}}">
 					</div>
 					 
 				</div>
