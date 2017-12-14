@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	Welcome!
+	Cari Partner
 @endsection
 
 
@@ -78,14 +78,14 @@
     
 						 {{-- <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
       						<label for="filled-in-box">Hipster</label> --}}
-						<input type="checkbox" id="Hipster" name="Hipster" class="role" checked="" />
-      					<label for="Hipster">Hipster</label>
+						<input type="checkbox" id="hipster" name="hipster" class="role" value="1" checked />
+      					<label for="hipster">Hipster</label>
 
-      						<input type="checkbox" id="Hustler" name="Hustler" class="role" checked="" />
-      					<label for="Hustler">Hustler</label>
+      						<input type="checkbox" id="hustler" name="hustler" class="role" value="1" checked />
+      					<label for="hustler">Hustler</label>
 
-      						<input type="checkbox" id="Hacker" name="Hacker" class="role" checked="" />
-      					<label for="Hacker">Hacker</label>
+      						<input type="checkbox" id="hacker" name="hacker" class="role" value="1" checked />
+      					<label for="hacker">Hacker</label>
 
 					</div>
 				</div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Users;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,16 +15,24 @@ class UsersController extends Controller
     	$first_name = $request['first_name'];
     	$last_name = $request['last_name'];
     	$password = bcrypt($request['password']);
-    	$role = $request['role'];
+    	$hipster = $request['hipster'];
+     	$hustler =$request['hustler'];
+     	$hacker = $request['hacker'];
 
-    	$user = new Users();
-    	$user->email = $email;
-    	$user->first_name = $first_name;
-    	$user->last_name = $last_name;
-    	$user->password = $password;
-    	$user->role = $role;
+        $hipster = $hipster!=NULL ? true : false;
+        $hustler =$hustler!=NULL ? true : false;
+        $hacker = $hacker!=NULL ? true : false;
 
-    	$user->save();
+    	$users = new Users();
+    	$users->email = $email;
+    	$users->first_name = $first_name;
+    	$users->last_name = $last_name;
+    	$users->password = $password;
+    	$users->hipster = $hipster;
+        $users->hustler =$hustler;
+        $users->hacker = $hacker;
+
+    	$users->save();
 
     	return redirect()->back();
 
