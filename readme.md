@@ -1,6 +1,7 @@
 # Tech Stack
-Front End : HTML , CSS , JS , JQuery ( JS Framework ) , Materialize ( CSS & JS Framework)
-Back End  : Laravel (PHP Framework)
+  Front End : HTML , CSS , JS , JQuery ( JS Framework ) , Materialize ( CSS & JS Framework) 
+  
+  Back End  : Laravel (PHP Framework)
 
 ## Laravel PHP Framework
 
