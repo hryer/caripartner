@@ -61,22 +61,22 @@
 				<div class="row">
 					<div class="input-field col m12 s12">
 						<label for="email">Your Email</label>
-						<input  type="text" name="email" id="email" class="validate" >
+						<input  type="text" name="email" id="email" class="validate" value="{{Request::old('email')}}">
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="input-field col m6 s6">
 						<label for="first_name">Your First Name</label>
-						<input type="text" name="first_name" id="first_name" class="input_text validate" data-length="12">
+						<input type="text" name="first_name" id="first_name" class="input_text validate" data-length="12" {{Request::old('first_name')}}>
 					</div>
 
 					<div class="input-field col m6 s6">
 						<label for="last_name">Your Last Name</label>
-						<input type="text" name="last_name" id="last_name" class="input_text validate" data-length="12">
+						<input type="text" name="last_name" id="last_name" class="input_text validate" data-length="12" {{Request::old('email')}}>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="input-field col m12 s12">
 						<label for="password">Your Password</label>
@@ -84,11 +84,11 @@
 						<input type="hidden" name="_token" value="{{Session::token()}}">
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col m12 s12">
 						<p class="teal-text ">Role</p>
-    
+
 						 {{-- <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
       						<label for="filled-in-box">Hipster</label> --}}
 						<input type="checkbox" id="hipster" name="hipster" class="role" value="1" checked />
@@ -116,7 +116,7 @@
   						</button>
 
 					</div>
-					 
+
 				</div>
 
 			</form>
