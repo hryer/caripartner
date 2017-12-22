@@ -11,17 +11,28 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::post('signup',[
+    'uses' => 'UsersController@postSignUp',
+    'as' => 'signup'
+]);
+
+Route::post('signin',[
+    'uses' => 'UsersController@postSignIn',
+    'as' => 'signin'
+]);
+
+Route::get('/dashboard',[
+    'uses' => 'UsersController@getDashboard',
+    'as' => 'dashboard'
+]);
 
 
 Route::group(['middleware' => ['web']],function(){
 	
-	Route::get('/', function () {
-    	return view('welcome');
-	});
 
-
-	Route::post('signup',[
-		'uses' => 'UsersController@postSignUp',
-		'as' => 'signup'
-	]);
 });

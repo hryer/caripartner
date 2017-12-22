@@ -6,10 +6,21 @@
 
 
 @section('content')
+	@if(count($errors)>0)
+	<div class="row">
+		<div class="col-md-6">
+			<ul>
+				@foreach($errors->all() as $error)
+					<li><h3>{{$error}}</h3></li>
+				@endforeach
+			</ul>
+		</div>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col m6">
 			<h1>Sign In</h1>
-			<form action="#" method="post">
+			<form action="{{ route('signin') }}" method="post">
 				
 				<div class="row">
 					<div class="input-field col m12 s12">
@@ -22,6 +33,7 @@
 					<div class="input-field col m12 s12">
 						<label for="password">Your Password</label>
 						<input type="password" name="password" id="password" class="validate">
+						<input type="hidden" name="_token" value="{{Session::token()}}">
 					</div>
 				</div>
 
@@ -45,7 +57,7 @@
 		<div class="col m6">
 			<h1>Sign Up</h1>
 			<form action="{{ route('signup') }}" method="post">
-				
+
 				<div class="row">
 					<div class="input-field col m12 s12">
 						<label for="email">Your Email</label>
@@ -69,6 +81,7 @@
 					<div class="input-field col m12 s12">
 						<label for="password">Your Password</label>
 						<input type="password" name="password" id="password" class="validate">
+						<input type="hidden" name="_token" value="{{Session::token()}}">
 					</div>
 				</div>
 				
@@ -87,6 +100,7 @@
       						<input type="checkbox" id="hacker" name="hacker" class="role" value="1" checked />
       					<label for="hacker">Hacker</label>
 
+
 					</div>
 				</div>
 
@@ -100,7 +114,7 @@
 						<button class="btn waves-effect waves-light red darken-3" type="button" name="action">Reset
     						<i class="material-icons right">cancel</i>
   						</button>
-  						<input type="hidden" name="_token" value="{{Session::token()}}">
+
 					</div>
 					 
 				</div>
