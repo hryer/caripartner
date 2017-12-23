@@ -8,15 +8,17 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		    
         <!-- Compiled and minified CSS -->
-		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
        
     </head>
     <body>
         
-        @include('includes.header')
+        <header>
+            @include('includes.header')
+        </header>
 
-        <div class="container">
+        <div class="content">
         	@yield('content')
         </div>
 
