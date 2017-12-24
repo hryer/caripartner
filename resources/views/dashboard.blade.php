@@ -14,15 +14,17 @@
             <div class="col s12 m8 offset-m2 l6 offset-l3">
 
                     <h1>What's your need?</h1>
-                    <form action="" method="post">
+                    <form action="{{route('post.create')}}" method="post">
                         {{csrf_field()}}
-                        <textarea name="new-post" id="new-post" cols="30" rows="10"></textarea>
+                        <textarea name="body" id="new-post" cols="30" rows="10"></textarea>
                         <button type="submit" class="waves-effect waves-teal btn-flat">POST</button>
+                        <input type="hidden" value="{{Session::token() }}" name="_token">
                     </form>
             </div>
     </section>
 
     <section class="row post ">
+        <h1 class="center">What's other says?</h1>
 
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <div class="card-panel grey lighten-5 z-depth-1">
