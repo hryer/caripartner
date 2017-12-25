@@ -9,7 +9,7 @@
 
 @section('content')
 
-
+    @include('includes.message');
     <section class="row new-post">
             <div class="col s12 m8 offset-m2 l6 offset-l3">
 

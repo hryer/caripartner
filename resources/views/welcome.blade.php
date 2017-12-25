@@ -8,17 +8,8 @@
 @section('content')
 
 	<div class="container">
-		@if(count($errors)>0)
-			<div class="row">
-				<div class="col-md-6">
-					<ul>
-						@foreach($errors->all() as $error)
-							<li><h3>{{$error}}</h3></li>
-						@endforeach
-					</ul>
-				</div>
-			</div>
-		@endif
+
+		@include('includes.message');
 		<div class="row">
 			<div class="col m6">
 				<h1>Sign In</h1>

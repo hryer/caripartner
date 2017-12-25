@@ -2,3 +2,18 @@
     color: #aaa;
     font-style: italic;
 }
+
+.errors, .success{
+    text-alignment:center;
+}
+.errors{
+    border: 1px solid red;
+    background-color: #f9b5af;
+    color:red;
+}
+
+.success{
+    border:1px solid green;
+    background-color: #d1f9da;
+    color:green;
+}
