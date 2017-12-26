@@ -15,6 +15,7 @@
       <li><a href="#">Components</a></li>
       <!-- Dropdown Trigger -->
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="{{route('logout')}}">Logout</a></li>
     </ul>
   </div>
 </nav>

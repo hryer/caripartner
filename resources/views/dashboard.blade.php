@@ -42,8 +42,11 @@
                         <div class="interaction">
                             <a href="#">Upvote</a>
                             <a href="#">Downvote</a>
+
+                            @if(Auth::user() == $post->users)
                             <a href="#">Edit</a>
-                            <a href="#">Delete</a>
+                            <a href="{{route('post.delete',['post_id' => $post->id])}}">Delete</a>
+                            @endif
                         </div>
                     </div>
 
