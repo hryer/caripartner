@@ -25,7 +25,7 @@
 
     <section class="row post ">
         <h1 class="center">What's other says?</h1>
-
+        @foreach($posts as $post)
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <div class="card-panel grey lighten-5 z-depth-1">
                 <div class="row valign-wrapper">
@@ -34,10 +34,10 @@
                     </div>
                     <div class="col s10">
                         <span class="black-text">
-                            This is a square image. Add the "circle" class to it to make it appear circular.
+                           {{$post->body}}
                         </span>
                         <div class="info">
-                            Posted by Harry on 24 Dec 2017
+                            Posted by {{$post->users->first_name}} on {{$post->created_at}}
                         </div>
                         <div class="interaction">
                             <a href="#">Upvote</a>
@@ -52,60 +52,7 @@
 
             </div>
         </div>
-
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <div class="card-panel grey lighten-5 z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                    </div>
-                    <div class="col s10">
-                        <span class="black-text">
-                            This is a square image. Add the "circle" class to it to make it appear circular.
-                        </span>
-                        <div class="info">
-                            Posted by Harry on 24 Dec 2017
-                        </div>
-                        <div class="interaction">
-                            <a href="#">Upvote</a>
-                            <a href="#">Downvote</a>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <div class="card-panel grey lighten-5 z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                    </div>
-                    <div class="col s10">
-                        <span class="black-text">
-                            This is a square image. Add the "circle" class to it to make it appear circular.
-                        </span>
-                        <div class="info">
-                            Posted by Harry on 24 Dec 2017
-                        </div>
-                        <div class="interaction">
-                            <a href="#">Upvote</a>
-                            <a href="#">Downvote</a>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
+        @endforeach
 
 
 
