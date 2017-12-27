@@ -43,6 +43,11 @@ Route::get('/delete-post/{post_id}',[
     'middleware' => 'auth'
 ]);
 
+Route::post('/edit',[
+    'uses' => 'PostController@postEditPost',
+    'as' => 'edit'
+]);
+
 Route::get('/logout',[
     'uses' => 'UsersController@getLogout',
     'as' => 'logout'

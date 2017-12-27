@@ -26,9 +26,9 @@
     <section class="row post ">
         <h1 class="center">What's other says?</h1>
         @foreach($posts as $post)
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="col s12 m8 offset-m2 l6 offset-l3" >
             <div class="card-panel grey lighten-5 z-depth-1">
-                <div class="row valign-wrapper">
+                <div class="row valign-wrapper" data-postid="{{$post->id}}">
                     <div class="col s2">
                         <img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
                     </div>
@@ -48,14 +48,15 @@
                             {{--@endif--}}
                             @if(Auth::user() == $post->users)
 
-                                <a class="modal-trigger" href="#editModal">Edit</a>
+                                <a class="modal-trigger" href="#editModal" data-post-body="{{$post->body}}">Edit</a>
                                 <a href="{{route('post.delete',['post_id' => $post->id ])}}">Delete</a>
                             @endif
 
                             <div id="editModal" class="modal bottom-sheet">
                                 <div class="modal-content">
                                     <h4>Edit Post</h4>
-                                    <textarea name="post-body" id="post-body" cols="30" rows="10"></textarea>
+                                    <input type="hidden" name="postId" id="post-id">
+                                    <textarea name="post-body" id="post-body" cols="0" rows="0"></textarea>
                                 </div>
 
                                 <div class="modal-footer">
@@ -63,7 +64,13 @@
                                     <button id="updateModal" type="submit" class="waves-effect waves-teal btn-flat">UPDATE</button>
 
                                 </div>
+
                             </div>
+                            <script>
+                                var token = '{{Session::token()}}';
+                                var urlEdit = '{{ route('edit') }}';
+
+                            </script>
 
 
                         </div>
