@@ -44,9 +44,24 @@
                             <a href="#">Downvote</a>
 
                             @if(Auth::user() == $post->users)
-                            <a href="#">Edit</a>
-                            <a href="{{route('post.delete',['post_id' => $post->id])}}">Delete</a>
+                                <a class=" modal-trigger" href="#editModal">Edit</a>
+                                <a href="{{route('post.delete',['post_id' => $post->id ])}}">Delete</a>
                             @endif
+
+                            <div id="editModal" class="modal bottom-sheet">
+                                <div class="modal-content">
+                                    <h4>Edit Post</h4>
+                                    <input type="text">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button id="cancelModal" class="waves-effect waves-red darken-4 btn-flat">CANCEL</button>
+                                    <button type="submit" class="waves-effect waves-teal btn-flat">UPDATE</button>
+
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
