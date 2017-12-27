@@ -16,7 +16,7 @@
                     <h1>What's your need?</h1>
                     <form action="{{route('post.create')}}" method="post">
                         {{csrf_field()}}
-                        <textarea name="body" id="new-post" cols="30" rows="10"></textarea>
+                        <textarea name="body" id="new-post" cols="30" rows="40"></textarea>
                         <button type="submit" class="waves-effect waves-teal btn-flat">POST</button>
                         <input type="hidden" value="{{Session::token() }}" name="_token">
                     </form>
@@ -42,21 +42,25 @@
                         <div class="interaction">
                             <a href="#">Upvote</a>
                             <a href="#">Downvote</a>
-
+                            {{--@if(Auth::user()->last_name == "Ermawan")--}}
+                                {{--<script>console.log("BANGSAATTT");</script>--}}
+                                {{--<script>console.log( {{Auth::user()->first_name }});</script>--}}
+                            {{--@endif--}}
                             @if(Auth::user() == $post->users)
-                                <a class=" modal-trigger" href="#editModal">Edit</a>
+
+                                <a class="modal-trigger" href="#editModal">Edit</a>
                                 <a href="{{route('post.delete',['post_id' => $post->id ])}}">Delete</a>
                             @endif
 
                             <div id="editModal" class="modal bottom-sheet">
                                 <div class="modal-content">
                                     <h4>Edit Post</h4>
-                                    <input type="text">
+                                    <textarea name="post-body" id="post-body" cols="30" rows="10"></textarea>
                                 </div>
 
                                 <div class="modal-footer">
                                     <button id="cancelModal" class="waves-effect waves-red darken-4 btn-flat">CANCEL</button>
-                                    <button type="submit" class="waves-effect waves-teal btn-flat">UPDATE</button>
+                                    <button id="updateModal" type="submit" class="waves-effect waves-teal btn-flat">UPDATE</button>
 
                                 </div>
                             </div>
