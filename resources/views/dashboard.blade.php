@@ -40,8 +40,8 @@
                             Posted by {{$post->users->first_name}} on {{$post->created_at}}
                         </div>
                         <div class="interaction">
-                            <a href="#">Upvote</a>
-                            <a href="#">Downvote</a>
+                            <a href="#" class="vote">Upvote</a>
+                            <a href="#" class="vote">Downvote</a>
                             {{--@if(Auth::user()->last_name == "Ermawan")--}}
                                 {{--<script>console.log("BANGSAATTT");</script>--}}
                                 {{--<script>console.log( {{Auth::user()->first_name }});</script>--}}
@@ -69,7 +69,7 @@
                             <script>
                                 var token = '{{Session::token()}}';
                                 var urlEdit = '{{ route('edit') }}';
-
+                                {{--var urlVote = '{{ route('vote') }}';--}}
                             </script>
 
 

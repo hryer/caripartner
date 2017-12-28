@@ -31,9 +31,6 @@ $(document).ready(function(){
     });
 
     $('#updateModal').click(function () {
-        console.log($('#post-id').val());
-        console.log(token);
-        console.log($('#post-body').val());
 
         $.ajax({
             method: 'POST',
@@ -57,5 +54,20 @@ $(document).ready(function(){
 
     });
 	//Modal Ends
+
+    $('.vote').on('click',function(e){
+        e.preventDefault();
+        console.log($('#post-id').val());
+
+        var isVote = e.target.previousElementSibling == null;
+
+        $.ajax({
+            method: 'POST',
+            url: urlVote,
+            data: {isVote: isVote,postId: $('#post-id').val(), _token: token}
+        }).done(function(){
+            
+        });
+    });
 });
 
