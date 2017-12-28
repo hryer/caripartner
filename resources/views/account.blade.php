@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="row new-post">
-        <div class="col md6 col offset md3">
+        <div class="col md6 col offset-m3">
             <header>
                 <h3>Your Account</h3>
             </header>
@@ -52,4 +52,12 @@
             </form>
         </div>
     </section>
+    @if(Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
+        <section class="row new-post">
+            <div class="col m6 ofset-3">
+
+                <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" class="responsive-img" alt="{{$user->first_name . '-' . $user->id . '.jpg'}}">
+            </div>
+        </section>
+    @endif
 @endsection

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Users;
-use App\Http\Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class PostController extends Controller
 {

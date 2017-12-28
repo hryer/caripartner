@@ -37,7 +37,7 @@ Route::post('/edit',[
 ]);
 
 Route::post('updateaccount',[
-    'uses' => 'UsersController@postSaveAccount',
+    'uses' => 'UsersController@postUpdateAccount',
     'as' => 'account.save'
 ]);
 
@@ -61,4 +61,9 @@ Route::get('/logout',[
 Route::get('/account',[
     'uses' => 'UsersController@getAccount',
     'as' => 'account'
+]);
+
+Route::get('/userimage/{filename}', [
+    'uses' => 'UsersController@getUserImage',
+    'as' => 'account.image'
 ]);
