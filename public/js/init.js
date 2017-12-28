@@ -46,9 +46,9 @@ $(document).ready(function(){
                 if(msg=='200'){
                     console.log("200 om");
                 }
-                console.log(postBodyElement);
-                console.log($('#post-body').val());
-                console.log(msg['new_body']);
+                // console.log(postBodyElement);
+                // console.log($('#post-body').val());
+                // console.log(msg['new_body']);
                 $(postBodyElement).text($('#post-body').val());
 
                 $('#editModal').modal('close');

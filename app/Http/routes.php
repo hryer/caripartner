@@ -26,15 +26,25 @@ Route::post('signin',[
     'as' => 'signin'
 ]);
 
+Route::post('/createpost',[
+    'uses' => 'PostController@postCreatePost',
+    'as' => 'post.create'
+]);
+
+Route::post('/edit',[
+    'uses' => 'PostController@postEditPost',
+    'as' => 'edit'
+]);
+
+Route::post('updateaccount',[
+    'uses' => 'UsersController@postSaveAccount',
+    'as' => 'account.save'
+]);
+
 Route::get('/dashboard',[
     'uses' => 'PostController@getDashboard',
     'as' => 'dashboard',
     'middleware' => 'auth'
-]);
-
-Route::post('/createpost',[
-    'uses' => 'PostController@postCreatePost',
-    'as' => 'post.create'
 ]);
 
 Route::get('/delete-post/{post_id}',[
@@ -43,12 +53,12 @@ Route::get('/delete-post/{post_id}',[
     'middleware' => 'auth'
 ]);
 
-Route::post('/edit',[
-    'uses' => 'PostController@postEditPost',
-    'as' => 'edit'
-]);
-
 Route::get('/logout',[
     'uses' => 'UsersController@getLogout',
     'as' => 'logout'
+]);
+
+Route::get('/account',[
+    'uses' => 'UsersController@getAccount',
+    'as' => 'account'
 ]);
