@@ -42,9 +42,17 @@ $(document).ready(function(){
             beforeSend: function(){
                 console.log("BELUM MASUK");
             },
-            success: function(result){ console.log(result['message']); }
-        }).done(function (msg) {
-            console.log(JSON.stringify(msg));
+            complete:function(msg){
+                if(msg=='200'){
+                    console.log("200 om");
+                }
+                console.log(postBodyElement);
+                console.log($('#post-body').val());
+                console.log(msg['new_body']);
+                $(postBodyElement).text($('#post-body').val());
+
+                $('#editModal').modal('close');
+            }
         })
 
     });
