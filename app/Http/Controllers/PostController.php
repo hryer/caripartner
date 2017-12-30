@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Votes;
 use App\Post;
-use App\Users;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+
 
 
 
@@ -57,8 +59,45 @@ class PostController extends Controller
         }
 
         $post->body = $request['body'];
-        $post->update;
+        $post->update();
 
         return response()->json(['new_body' => $post->body],200);
+    }
+
+    public function postVotePost(Request $request){
+
+        $post_id = $request['postId'];
+        $is_vote = $request['isVote'] === 'true';
+        $update = false;
+        $post = Post::find($post_id);
+
+        if(!$post){
+            return null;
+        }
+
+        $user = Auth::user();
+        $vote = $user->votes()->where('post_id',$post_id)->first();
+
+        if($vote){
+            $already_vote = $vote->vote;
+            $update = true;
+            if($already_vote == $is_vote){
+                $vote->delete();
+                return null;
+            }
+        }else{
+            $vote = new Vote();
+        }
+
+        $vote->vote = $is_vote;
+        $vote->user_id = $user->id;
+        $vote->post_id = $post->id;
+
+        if($update){
+            $vote->update();
+        }else{
+            $vote->save();
+        }
+        return null;
     }
 }

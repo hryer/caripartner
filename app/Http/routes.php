@@ -41,6 +41,11 @@ Route::post('updateaccount',[
     'as' => 'account.save'
 ]);
 
+Route::post('/vote',[
+    'uses' => 'PostController@postVotePost',
+    'as' => 'vote'
+]);
+
 Route::get('/dashboard',[
     'uses' => 'PostController@getDashboard',
     'as' => 'dashboard',

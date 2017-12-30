@@ -17,7 +17,7 @@ $(document).ready(function(){
         postBodyElement = event.target.parentNode.parentNode.childNodes[1]
         var postBody = postBodyElement.textContent;
         // var postBody = $(event.relatedTarget).data('post-body');
-        var postId = event.target.parentNode.parentNode.parentNode.dataset['postid'];
+        postId = event.target.parentNode.parentNode.parentNode.dataset['postid'];
         console.log(postId);
         $('#post-id').val(postId);
         $('#post-body').val(postBody);
@@ -50,23 +50,63 @@ $(document).ready(function(){
 
                 $('#editModal').modal('close');
             }
-        })
+        }).done(function (msg) {
+            if(msg=='200'){
+                console.log("200 om");
+            }
+            alert(msg['new_body']);
+
+            $(postBodyElement).text(msg['new_body']);
+
+            $('#editModal').modal('close');
+        }).fail(function() {
+            alert("error");
+        });
 
     });
 	//Modal Ends
 
     $('.vote').on('click',function(e){
         e.preventDefault();
-        console.log($('#post-id').val());
 
-        var isVote = e.target.previousElementSibling == null;
+        postId = e.target.parentNode.parentNode.parentNode.dataset['postid'];
+
+
+        var isVote = e.target.previousElementSibling == null ;
+
+        // console.log("isVote = " + isVote + " postId = " + postId + " token = " + token );
 
         $.ajax({
             method: 'POST',
             url: urlVote,
-            data: {isVote: isVote,postId: $('#post-id').val(), _token: token}
+            data: {isVote: isVote,postId:postId, _token: token},
+            success: function () {
+                e.target.innerText = isVote ? e.target.innerText == 'Upvote' ? 'You upvote this post' : 'Upvote' : e.target.innerText == 'Downvote' ? 'You downvote this post' : 'Downvote';
+                if (isVote) {
+                    e.target.nextElementSibling.innerText = 'Downvote';
+                } else {
+                    e.target.previousElementSibling.innerText = 'Vote';
+                }
+            },
+            complete:function () {
+               e.target.innerText = isVote ? e.target.innerText == 'Upvote' ? 'You upvote this post' : 'Upvote' : e.target.innerText == 'Downvote' ? 'You downvote this post' : 'Downvote';
+                if (isVote) {
+                   e.target.nextElementSibling.innerText = 'Downvote';
+                } else {
+                    e.target.previousElementSibling.innerText = 'Upvote';
+                }
+            }
         }).done(function(){
-            
+            alert("SUCCESS");
+            e.target.innerText = isVote ? e.target.innerText == 'Upvote' ? 'You upvote this post' : 'Upvote' : e.target.innerText == 'Downvote' ? 'You downvote this post' : 'Downvote';
+            if (isVote) {
+                e.target.nextElementSibling.innerText = 'Downvote';
+            } else {
+                e.target.previousElementSibling.innerText = 'Upvote';
+            }
+        })
+        .fail(function() {
+            alert( "error" );
         });
     });
 });

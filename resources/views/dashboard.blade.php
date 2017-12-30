@@ -40,12 +40,13 @@
                             Posted by {{$post->users->first_name}} on {{$post->created_at}}
                         </div>
                         <div class="interaction">
-                            <a href="#" class="vote">Upvote</a>
-                            <a href="#" class="vote">Downvote</a>
+                            <a href="#" class="vote">{{ Auth::user()->votes()->where('post_id', $post->id)->first() ? Auth::user()->votes()->where('post_id', $post->id)->first()->vote == 1 ? 'You upvote this post' : 'Upvote' : 'Upvote'  }}</a>
+                            <a href="#" class="vote">{{ Auth::user()->votes()->where('post_id', $post->id)->first() ? Auth::user()->votes()->where('post_id', $post->id)->first()->vote == 0 ? 'You downvote this post' : 'Downvote' : 'Downvote'  }}</a>
+
                             {{--@if(Auth::user()->last_name == "Ermawan")--}}
-                                {{--<script>console.log("BANGSAATTT");</script>--}}
-                                {{--<script>console.log( {{Auth::user()->first_name }});</script>--}}
+                                {{--<script>console.log({{Auth::user()->votes()->vote}});</script>--}}
                             {{--@endif--}}
+
                             @if(Auth::user() == $post->users)
 
                                 <a class="modal-trigger" href="#editModal" data-post-body="{{$post->body}}">Edit</a>
@@ -69,7 +70,7 @@
                             <script>
                                 var token = '{{Session::token()}}';
                                 var urlEdit = '{{ route('edit') }}';
-                                {{--var urlVote = '{{ route('vote') }}';--}}
+                                var urlVote = '{{ route('vote') }}';
                             </script>
 
 
